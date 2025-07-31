@@ -4,6 +4,8 @@ import { ContainerComponent } from "./components/container/container.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { DividerComponent } from "./components/divider/divider.component";
 import { ContactComponent } from "./components/contact/contact.component";
+import contactList from './agenda.json'
+import { FormsModule } from '@angular/forms';
 
 interface Contact {
   id: number;
@@ -11,12 +13,17 @@ interface Contact {
   telefone: string;
 }
 
-import contactList from './agenda.json'
-
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ContainerComponent, ContainerComponent, HeaderComponent, DividerComponent, ContactComponent],
+  imports: [ 
+    ContainerComponent, 
+    ContainerComponent, 
+    HeaderComponent, 
+    DividerComponent, 
+    ContactComponent,
+    FormsModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -24,7 +31,19 @@ export class AppComponent {
   alphabet: string = 'abcdefghijklmnopqrstuvwxyz';
   contacts: Contact[] = contactList;
 
+  filterByText: string = '';
+
+  filterContactsByText(): Contact[] {
+    if (!this.filterByText) {
+      return this.contacts;
+    }
+    
+    return this.contacts.filter(contact => 
+      contact.nome.toLowerCase().startsWith(this.filterByText.toLowerCase())
+    );
+  }
+
   filterContactsByLetter(letter: string): Contact[] {
-    return this.contacts.filter(contact => contact.nome.toLowerCase().startsWith(letter));
+    return this.filterContactsByText().filter(contact => contact.nome.toLowerCase().startsWith(letter));
   }
 }
