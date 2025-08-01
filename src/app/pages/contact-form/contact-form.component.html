@@ -9,28 +9,28 @@
         </section>
     </header>
 
-    <form>
+    <form [formGroup]="contactForm">
         <label for="name">Nome:</label>
-        <input type="text" id="name" placeholder="Digite o nome do contato">
+        <input type="text" id="name" formControlName="name" placeholder="Digite o nome do contato">
 
         <label for="phone">Telefone:</label>
-        <input type="text" id="phone" placeholder="Digite o telefone do contato">
+        <input type="text" id="phone" formControlName="phone" placeholder="Digite o telefone do contato">
 
         <label for="email">E-mail:</label>
-        <input type="email" id="email" placeholder="Digite o e-mail do contato">
+        <input type="email" id="email" formControlName="email" placeholder="Digite o e-mail do contato">
 
         <app-divider></app-divider>
 
         <label for="birthday">Aniversário:</label>
-        <input type="text" id="birthday" placeholder="Digite o aniversário do contato">
+        <input type="text" id="birthday" formControlName="birthday" placeholder="Digite o aniversário do contato">
 
         <label for="social-media">Redes Sociais:</label>
         <div class="input-container">
             <span class="span-http">http://</span>
-            <input type="url" id="social-media" placeholder="Digite as redes sociais do contato">
+            <input type="url" id="social-media" formControlName="socialMedia" placeholder="Digite as redes sociais do contato">
         </div>
 
-        <textarea type="text" name="observations" id="observations" placeholder="Digite suas observações"></textarea>
+        <textarea type="text" name="observations" id="observations" formControlName="observations" placeholder="Digite suas observações"></textarea>
 
         <section class="buttons">
             <button class="cancel-button" type="button">Cancelar</button>
