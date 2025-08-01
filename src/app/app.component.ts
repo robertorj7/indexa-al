@@ -6,6 +6,7 @@ import { DividerComponent } from "./components/divider/divider.component";
 import { ContactComponent } from "./components/contact/contact.component";
 import contactList from './agenda.json'
 import { FormsModule } from '@angular/forms';
+import { ContactFormComponent } from "./pages/contact-form/contact-form.component";
 
 interface Contact {
   id: number;
@@ -16,14 +17,15 @@ interface Contact {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ 
-    ContainerComponent, 
-    ContainerComponent, 
-    HeaderComponent, 
-    DividerComponent, 
+  imports: [
+    ContainerComponent,
+    ContainerComponent,
+    HeaderComponent,
+    DividerComponent,
     ContactComponent,
-    FormsModule
-  ],
+    FormsModule,
+    ContactFormComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
