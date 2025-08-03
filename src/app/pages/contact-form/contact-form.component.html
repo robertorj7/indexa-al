@@ -9,7 +9,7 @@
         </section>
     </header>
 
-    <form [formGroup]="contactForm">
+    <form [formGroup]="contactForm" (ngSubmit)="saveContact()">
         <label for="name">Nome:</label>
         <input type="text" id="name" formControlName="name" placeholder="Digite o nome do contato">
 
@@ -33,7 +33,7 @@
         <textarea type="text" name="observations" id="observations" formControlName="observations" placeholder="Digite suas observações"></textarea>
 
         <section class="buttons">
-            <button class="cancel-button" type="button">Cancelar</button>
+            <button class="cancel-button" type="button" (click)="cancel()">Cancelar</button>
             <button class="save-button" type="submit">Salvar Contato</button>
         </section>
     </form>
