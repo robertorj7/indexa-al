@@ -52,8 +52,20 @@
         <textarea type="text" name="observations" id="observations" formControlName="observations" placeholder="Digite suas observações"></textarea>
 
         <section class="buttons">
-            <button class="cancel-button" type="button" (click)="cancel()">Cancelar</button>
-            <button class="save-button" type="submit">Salvar Contato</button>
+            <button 
+                type="button" 
+                (click)="cancel()"
+            >
+                Cancelar
+            </button>
+            <button
+                [disabled]="contactForm.invalid"  
+                [class.save-button]="contactForm.valid"
+                [class.disabled-button]="contactForm.invalid"
+                type="submit"
+            >
+                Salvar Contato
+            </button>
         </section>
     </form>
 </app-container>
