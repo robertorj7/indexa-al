@@ -58,10 +58,9 @@
             >
                 Cancelar
             </button>
-            <button
-                [disabled]="contactForm.invalid"  
-                [class.save-button]="contactForm.valid"
-                [class.disabled-button]="contactForm.invalid"
+           <button
+                [disabled]="contactForm.invalid"
+                [ngClass]="{'save-button': contactForm.valid, 'disabled-button': contactForm.invalid}"
                 type="submit"
             >
                 Salvar Contato
