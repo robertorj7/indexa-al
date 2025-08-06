@@ -41,17 +41,23 @@ export class ContactListComponent implements OnInit {
     this.contacts = this.contactService.getContacts();
   }
 
+   private removeAccent(text: string): string {
+    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
   filterContactsByText(): Contact[] {
     if (!this.filterByText) {
       return this.contacts;
     }
     
-    return this.contacts.filter(contact => 
-      contact.nome.toLowerCase().startsWith(this.filterByText.toLowerCase())
-    );
+    return this.contacts.filter(contact => {
+      return this.removeAccent(contact.nome).toLowerCase().includes(this.removeAccent(this.filterByText).toLowerCase());
+    });
   }
 
   filterContactsByLetter(letter: string): Contact[] {
-    return this.filterContactsByText().filter(contact => contact.nome.toLowerCase().startsWith(letter));
+    return this.filterContactsByText().filter(contact => {
+      return this.removeAccent(contact.nome).toLowerCase().startsWith(this.removeAccent(letter.toLowerCase()));
+    });
   }
 }

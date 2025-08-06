@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -19,10 +19,14 @@ import { DividerComponent } from "../../components/divider/divider.component";
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.css'
 })
-export class ContactFormComponent {
-  contactForm!: FormGroup
+export class ContactFormComponent implements OnInit {
+  contactForm!: FormGroup;
 
-  constructor() {
+  ngOnInit() {
+    this.initializeForm();
+  }
+
+  initializeForm() {
     this.contactForm = new FormGroup({
       name: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
