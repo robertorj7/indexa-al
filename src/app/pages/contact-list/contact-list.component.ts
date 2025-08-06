@@ -7,12 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
 import { CommonModule } from '@angular/common';
-
-interface Contact {
-  id: number;
-  nome: string;
-  telefone: string;
-}
+import { Contact } from '../../components/contact/contact';
 
 @Component({
   selector: 'app-contact-list',
@@ -57,7 +52,7 @@ export class ContactListComponent implements OnInit {
 
   filterContactsByLetter(letter: string): Contact[] {
     return this.filterContactsByText().filter(contact => {
-      return this.removeAccent(contact.nome).toLowerCase().startsWith(this.removeAccent(letter.toLowerCase()));
+      return this.removeAccent(contact.nome).toLowerCase().startsWith(this.removeAccent(letter).toLowerCase());
     });
   }
 }
