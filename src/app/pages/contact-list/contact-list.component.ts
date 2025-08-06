@@ -33,7 +33,9 @@ export class ContactListComponent implements OnInit {
   constructor(private contactService: ContactService) {}
 
   ngOnInit() {
-    this.contacts = this.contactService.getContacts();
+    this.contactService.getContacts().subscribe((contacts) => {
+      this.contacts = contacts;
+    });
   }
 
    private removeAccent(text: string): string {
