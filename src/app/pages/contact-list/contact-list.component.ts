@@ -8,19 +8,21 @@ import { RouterLink } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
 import { CommonModule } from '@angular/common';
 import { Contact } from '../../components/contact/contact';
+import { ContactProfileComponent } from "../contact-profile/contact-profile.component";
 
 @Component({
   selector: 'app-contact-list',
   standalone: true,
   imports: [
     CommonModule,
-    ContainerComponent, 
+    ContainerComponent,
     HeaderComponent,
     DividerComponent,
-    ContactComponent,    
+    ContactComponent,
     FormsModule,
-    RouterLink
-  ],
+    RouterLink,
+    ContactProfileComponent
+],
   templateUrl: './contact-list.component.html',
   styleUrl: './contact-list.component.css'
 })
