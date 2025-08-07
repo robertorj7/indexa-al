@@ -19,11 +19,11 @@
       </app-divider>
       
         @for (contact of filterContactsByLetter(letter); track contact.id) {
-          <app-contact [name]="contact.name" [phone]="contact.phone"></app-contact>
+          <app-contact 
+            [name]="contact.name" 
+            [phone]="contact.phone"
+            [id]="contact.id!">
+          </app-contact>
         }
     }
 </app-container>
-
-<app-contact-profile>
-  
-</app-contact-profile>
