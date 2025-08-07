@@ -35,10 +35,12 @@ export class ContactListComponent implements OnInit {
   ngOnInit() {
     this.contactService.getContacts().subscribe((contacts) => {
       this.contacts = contacts;
+      console.log(this.contacts)
     });
   }
 
    private removeAccent(text: string): string {
+    if (!text) return '';
     return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
@@ -48,13 +50,13 @@ export class ContactListComponent implements OnInit {
     }
     
     return this.contacts.filter(contact => {
-      return this.removeAccent(contact.nome).toLowerCase().includes(this.removeAccent(this.filterByText).toLowerCase());
+      return this.removeAccent(contact.name).toLowerCase().includes(this.removeAccent(this.filterByText).toLowerCase());
     });
   }
 
   filterContactsByLetter(letter: string): Contact[] {
     return this.filterContactsByText().filter(contact => {
-      return this.removeAccent(contact.nome).toLowerCase().startsWith(this.removeAccent(letter).toLowerCase());
+      return this.removeAccent(contact.name).toLowerCase().startsWith(this.removeAccent(letter).toLowerCase());
     });
   }
 }

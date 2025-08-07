@@ -45,10 +45,10 @@ export class ContactFormComponent implements OnInit {
 
   saveContact() {
     const newContact = this.contactForm.value;
-    this.contactService.saveContact(newContact);
-    
-    this.contactForm.reset();
-    this.router.navigateByUrl('/list');
+    this.contactService.saveContact(newContact).subscribe(() => {
+      this.contactForm.reset();
+      this.router.navigateByUrl('/list');      
+    });
   }
 
   cancel() {
