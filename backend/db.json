@@ -17,15 +17,6 @@
       "name": "Bruno",
       "phone": "95 695521583",
       "email": "bruno@example.com"
-    },
-    {
-      "name": "Teste",
-      "phone": "123456",
-      "email": "email@email.com",
-      "birthday": "",
-      "socialMedia": "",
-      "observations": "",
-      "id": 4
     }
   ]
 }

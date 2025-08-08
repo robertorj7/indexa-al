@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ContainerComponent } from "../../components/container/container.component";
 import { Contact } from '../../components/contact/contact';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-contact-profile',
   standalone: true,
   imports: [
-    ContainerComponent,    
-    RouterLink
+    ContainerComponent,
+    RouterLink    
   ],
   templateUrl: './contact-profile.component.html',
   styleUrl: './contact-profile.component.css'
@@ -27,7 +27,8 @@ export class ContactProfileComponent implements OnInit{
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +36,14 @@ export class ContactProfileComponent implements OnInit{
     if (id) {
       this.contactService.getContactById(parseInt(id)).subscribe(contact => {
         this.contact = contact;
+      });
+    }
+  }
+
+  deleteContact(): void {
+    if (this.contact.id) {
+      this.contactService.deleteContact(this.contact.id).subscribe(() => {
+        this.router.navigateByUrl('/list');
       });
     }
   }
