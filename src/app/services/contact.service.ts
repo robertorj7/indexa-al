@@ -15,7 +15,11 @@ export class ContactService {
     return this.http.get<Contact[]>(this.apiUrl);
   }
 
-  saveContact(contact: Contact) {
+  saveContact(contact: Contact): Observable<Contact> {
     return this.http.post<Contact>(this.apiUrl, contact);
+  }
+
+  getContactById(id: number): Observable<Contact> {
+    return this.http.get<Contact>(`${this.apiUrl}/${id}`);
   }
 }
