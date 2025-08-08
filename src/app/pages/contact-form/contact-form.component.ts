@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ContainerComponent } from "../../components/container/container.component";
@@ -25,11 +25,13 @@ export class ContactFormComponent implements OnInit {
 
   constructor(
     private contactService: ContactService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
   
   ngOnInit() {
     this.initializeForm();
+    this.loadContact();
   }
 
   initializeForm() {
@@ -43,9 +45,21 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
+  loadContact() {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+      this.contactService.getContactById(parseInt(id)).subscribe(contact => {
+        this.contactForm.patchValue(contact); 
+      });
+    }
+  }
+
   saveContact() {
     const newContact = this.contactForm.value;
-    this.contactService.saveContact(newContact).subscribe(() => {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    newContact.id = id ? parseInt(id) : null;
+
+    this.contactService.editOrSaveContact(newContact).subscribe(() => {
       this.contactForm.reset();
       this.router.navigateByUrl('/list');      
     });

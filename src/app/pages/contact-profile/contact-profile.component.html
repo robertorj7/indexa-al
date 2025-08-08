@@ -41,7 +41,7 @@
       <button (click)="deleteContact()" class="delete-button">
         Excluir contato
       </button>
-      <button class="edit-button">
+      <button [routerLink]="['/form', contact.id]" class="edit-button">
         Editar
       </button>
     </div>

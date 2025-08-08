@@ -9,11 +9,15 @@ export const routes: Routes = [
         component: ContactFormComponent
     },
     {
+        path: 'form/:id',
+        component: ContactFormComponent
+    },
+    {
         path: 'list',
         component: ContactListComponent
     },
     {
-        path: 'perfil-contato/:id',
+        path: 'contact-profile/:id',
         component: ContactProfileComponent        
     },
     {

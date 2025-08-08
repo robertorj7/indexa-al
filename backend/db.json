@@ -1,10 +1,13 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "name": "Ana",
+      "name": "Ana Paula",
       "phone": "29 278869420",
-      "email": "ana@example.com"
+      "email": "ana@example.com",
+      "birthday": "",
+      "socialMedia": "",
+      "observations": "",
+      "id": 1
     },
     {
       "id": 2,
@@ -17,6 +20,15 @@
       "name": "Bruno",
       "phone": "95 695521583",
       "email": "bruno@example.com"
+    },
+    {
+      "name": "Teste",
+      "phone": "123456",
+      "email": "test@test.com",
+      "birthday": "",
+      "socialMedia": "",
+      "observations": "",
+      "id": 4
     }
   ]
 }

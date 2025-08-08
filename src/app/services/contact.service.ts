@@ -23,6 +23,18 @@ export class ContactService {
     return this.http.get<Contact>(`${this.apiUrl}/${id}`);
   }
 
+  editContact(contact: Contact): Observable<Contact> {
+    return this.http.put<Contact>(`${this.apiUrl}/${contact.id}`, contact);
+  }
+
+  editOrSaveContact(contact: Contact): Observable<Contact> {
+    if (contact.id) {
+      return this.editContact(contact);
+    } else {
+      return this.saveContact(contact);
+    }
+  }
+
   deleteContact(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

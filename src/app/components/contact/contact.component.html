@@ -6,10 +6,10 @@
         <li>{{ phone }}</li>
         <li>
             <button>
-                <img src="assets/pencil-square.png" alt="Pencil">                
-            </button>        
-            <button [routerLink]="['/perfil-contato', id]">
-                <img src="assets/trash.png" alt="Trash">                
+                <img [routerLink]="['/form', id]" src="assets/pencil-square.png" alt="Pencil">
+            </button>
+            <button [routerLink]="['/contact-profile', id]">
+                <img src="assets/trash.png" alt="Trash">             
             </button>
         </li>
     </ul>
