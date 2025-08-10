@@ -6,6 +6,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ContainerComponent } from "../../components/container/container.component";
 import { DividerComponent } from "../../components/divider/divider.component";
 import { ContactService } from '../../services/contact.service';
+import { ErrorMessageComponent } from '../../components/error-message/error-message.component';
 
 @Component({
   selector: 'app-contact-form',
@@ -13,7 +14,8 @@ import { ContactService } from '../../services/contact.service';
   imports: [
     CommonModule,   
     ContainerComponent, 
-    DividerComponent, 
+    DividerComponent,
+    ErrorMessageComponent,
     ReactiveFormsModule,
     RouterLink
   ],
