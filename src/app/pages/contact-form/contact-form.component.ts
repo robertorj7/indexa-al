@@ -46,6 +46,14 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
+  getControl(controlName: string): FormControl {
+    const control = this.contactForm.get(controlName);
+    if (!(control instanceof FormControl)) {
+      throw new Error('Controle de formulário inválido: ' + controlName);
+    }
+    return control;
+  }
+
   loadContact() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
