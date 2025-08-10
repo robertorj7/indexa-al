@@ -3,14 +3,16 @@ import { ContainerComponent } from "../../components/container/container.compone
 import { Contact } from '../../components/contact/contact';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
+import { DividerComponent } from "../../components/divider/divider.component";
 
 @Component({
   selector: 'app-contact-profile',
   standalone: true,
   imports: [
     ContainerComponent,
-    RouterLink    
-  ],
+    RouterLink,
+    DividerComponent
+],
   templateUrl: './contact-profile.component.html',
   styleUrl: './contact-profile.component.css'
 })
@@ -19,6 +21,7 @@ export class ContactProfileComponent implements OnInit{
   contact: Contact = {
     id: 0,
     name: '',
+    avatar: '',
     email: '',
     phone: '',
     birthday: '',

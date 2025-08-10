@@ -11,7 +11,7 @@ import { ContactService } from '../../services/contact.service';
   selector: 'app-contact-form',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,   
     ContainerComponent, 
     DividerComponent, 
     ReactiveFormsModule,
@@ -37,6 +37,7 @@ export class ContactFormComponent implements OnInit {
   initializeForm() {
     this.contactForm = new FormGroup({
       name: new FormControl('', Validators.required),
+      avatar: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.email, Validators.required]),
       birthday: new FormControl(''),
@@ -61,11 +62,29 @@ export class ContactFormComponent implements OnInit {
 
     this.contactService.editOrSaveContact(newContact).subscribe(() => {
       this.contactForm.reset();
-      this.router.navigateByUrl('/list');      
+      this.router.navigateByUrl('/list');
     });
+  }
+
+  selectFile(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.readFile(file);
+    }
+  }
+
+  readFile(file: File) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.result) {
+        this.contactForm.get('avatar')?.setValue(reader.result);
+      }
+    }
+    reader.readAsDataURL(file);
   }
 
   cancel() {
     this.contactForm.reset();
+    this.router.navigateByUrl('/list');
   }
 }
