@@ -7,18 +7,19 @@ import { ContainerComponent } from "../../components/container/container.compone
 import { DividerComponent } from "../../components/divider/divider.component";
 import { ContactService } from '../../services/contact.service';
 import { ErrorMessageComponent } from '../../components/error-message/error-message.component';
+import { HeaderComponent } from "../../components/header/header.component";
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
   imports: [
-    CommonModule,   
-    ContainerComponent, 
+    CommonModule,
+    ContainerComponent,
     DividerComponent,
     ErrorMessageComponent,
     ReactiveFormsModule,
-    RouterLink
-  ],
+    HeaderComponent
+],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.css'
 })

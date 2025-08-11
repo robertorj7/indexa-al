@@ -4,15 +4,17 @@ import { Contact } from '../../components/contact/contact';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
 import { DividerComponent } from "../../components/divider/divider.component";
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   selector: 'app-contact-profile',
   standalone: true,
   imports: [
     ContainerComponent,
-    RouterLink,
-    DividerComponent
-],
+    DividerComponent,
+    HeaderComponent,
+    RouterLink
+  ],
   templateUrl: './contact-profile.component.html',
   styleUrl: './contact-profile.component.css'
 })

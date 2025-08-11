@@ -1,54 +1,40 @@
 <app-container>
-    <header>
-        <section class="link-header">
-            <img src="assets/logo.png" alt="Logo">
-            <div>
-                <button routerLink="/list">
-                    <img class="arrow" src="assets/arrow-left.png" alt="">
-                    <a>Voltar</a>
-                </button>
-            </div>
-        </section>
-        <section class="contact-header">
-            <img src="assets/profile-contact.png" alt="Profile Contact">
-            <h1>Perfil do Contato</h1>
-        </section>
-    </header>
-    <section class="profile">
-      <div class="image-profile">
-        <img [src]="contact.avatar" alt="Avatar">
-        <h2><strong>{{ contact.name }}</strong></h2>
-      </div>
-      <app-divider></app-divider>
-      <ul>
-        <li>
-          <i class="material-icons">call</i>
-          <strong>Telefone</strong>
-        </li>
-        <li>{{ contact.phone }}</li>
-        <li>
-          <i class="material-icons">mail</i>
-          <strong>Email</strong>
-        </li>
-        <li>{{ contact.email }}</li>
-        <li>
-          <i class="material-icons">event_available</i>
-          <strong>Data de nascimento</strong>
-        </li>
-        <li>{{ contact.birthday }}</li>
-        <li>
-          <i class="material-icons">language</i>
-          <strong>Redes sociais</strong>
-        </li>
-        <li>{{ contact.socialMedia }}</li>
-      </ul>
-      <div class="buttons">
-        <button (click)="deleteContact()" class="delete-button">
-          Excluir contato
-        </button>
-        <button [routerLink]="['/form', contact.id]" class="edit-button">
-          Editar
-        </button>
-      </div>
+  <app-header [isHome]="false" [title]="'Perfil do Contato'" [bannerSrc]="'assets/profile-contact.png'"></app-header>    
+  <section class="profile">
+    <div class="image-profile">
+      <img [src]="contact.avatar" alt="Avatar">
+      <h2><strong>{{ contact.name }}</strong></h2>
+    </div>
+    <app-divider></app-divider>
+    <ul>
+      <li>
+        <i class="material-icons">call</i>
+        <strong>Telefone</strong>
+      </li>
+      <li>{{ contact.phone }}</li>
+      <li>
+        <i class="material-icons">mail</i>
+        <strong>Email</strong>
+      </li>
+      <li>{{ contact.email }}</li>
+      <li>
+        <i class="material-icons">event_available</i>
+        <strong>Data de nascimento</strong>
+      </li>
+      <li>{{ contact.birthday }}</li>
+      <li>
+        <i class="material-icons">language</i>
+        <strong>Redes sociais</strong>
+      </li>
+      <li>{{ contact.socialMedia }}</li>
+    </ul>
+    <div class="buttons">
+      <button (click)="deleteContact()" class="delete-button">
+        Excluir contato
+      </button>
+      <button [routerLink]="['/form', contact.id]" class="edit-button">
+        Editar
+      </button>
+    </div>
   </section>
 </app-container>

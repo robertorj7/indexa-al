@@ -1,20 +1,5 @@
 <app-container>
-    <header>
-        <section class="link-header">
-            <img src="assets/logo.png" alt="Logo">
-            <div>
-                <button routerLink="/list">
-                    <img class="arrow" src="assets/arrow-left.png" alt="">
-                    <a>Voltar</a>
-                </button>
-            </div>
-        </section>
-        <section class="contact-header">
-            <img src="assets/add-contact.png" alt="Add Contact">
-            <h1>Adicionar Contato</h1>
-        </section>
-    </header>
-    <app-divider></app-divider>
+    <app-header [isHome]="false" [title]="'Adicionar Contato'" [bannerSrc]="'assets/add-contact.png'"></app-header>
 
     <form [formGroup]="contactForm" (ngSubmit)="saveContact()">
         <div role="button" class="contact-image">
